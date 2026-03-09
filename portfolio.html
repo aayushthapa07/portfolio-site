@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aayush Thapa · cybersecurity portfolio</title>
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #eef2f5;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.5;
+      color: #13262f;
+      padding: 2rem 1.5rem;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* main card – clean white, subtle tech edge */
+    .portfolio {
+      max-width: 1300px;
+      width: 100%;
+      background: #ffffff;
+      border-radius: 2.2rem;
+      box-shadow: 0 30px 50px -20px rgba(0,25,45,0.3);
+      padding: 2.8rem 2.8rem;
+      transition: all 0.2s;
+      border: 1px solid #dae9f2;
+    }
+
+    /* header section with name and contact */
+    .name-title {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .name-title h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #0a2836;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem 2rem;
+      background: #eaf1f7;
+      padding: 0.8rem 2rem;
+      border-radius: 70px;
+    }
+
+    .contact-links a, .contact-links span {
+      color: #12485d;
+      font-weight: 500;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .contact-links i {
+      color: #236b84;
+      width: 1.3rem;
+      font-size: 1.2rem;
+    }
+
+    .contact-links a:hover {
+      text-decoration: underline;
+      color: #0b3b4c;
+    }
+
+    /* summary block */
+    .summary-block {
+      background: #f0f7fd;
+      border-radius: 2rem;
+      padding: 1.8rem 2.2rem;
+      margin: 2rem 0 2.2rem 0;
+      border-left: 10px solid #1d5f7a;
+      font-size: 1.2rem;
+      color: #153e4f;
+      box-shadow: inset 0 2px 8px rgba(255,255,255,0.8), 0 6px 10px -6px #afc9db;
+    }
+
+    .summary-block strong {
+      color: #002b39;
+    }
+
+    /* two column layout */
+    .grid-details {
+      display: grid;
+      grid-template-columns: 1.2fr 0.9fr;
+      gap: 2rem 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    /* left column — technical skills (expanded) */
+    .skills-panel {
+      background: #ffffff;
+      border-radius: 2rem;
+      padding: 1.8rem 2rem;
+      border: 1px solid #cfdeec;
+      box-shadow: 0 10px 18px -14px #b0c8da;
+    }
+
+    .skills-panel h2, .project-panel h2, .edu-panel h2 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #103e50;
+      border-bottom: 4px solid #c2ddee;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.6rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .skill-category {
+      margin-bottom: 2rem;
+    }
+
+    .skill-category h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #1b5771;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border-left: 4px solid #377a96;
+      padding-left: 0.8rem;
+    }
+
+    .skill-category h3 i {
+      color: #1a6a86;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem 1rem;
+    }
+
+    .skill-tags span {
+      background: #e9f2fa;
+      border: 1px solid #bdd2e6;
+      padding: 0.3rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #0e4156;
+    }
+
+    .tools-list {
+      list-style: none;
+      margin-top: 0.5rem;
+    }
+
+    .tools-list li {
+      padding: 0.3rem 0;
+      font-weight: 500;
+      color: #1b3b49;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px dashed #c8deef;
+    }
+
+    .tools-list i {
+      color: #1d6f8f;
+      width: 1.6rem;
+    }
+
+    /* right column cards */
+    .project-panel, .edu-panel {
+      background: #ffffff;
+      border-radius: 2rem;
+      padding: 1.8rem 2rem;
+      border: 1px solid #cfdeec;
+      box-shadow: 0 10px 18px -14px #b0c8da;
+      margin-bottom: 2rem;
+    }
+
+    .project-panel:last-child, .edu-panel:last-child {
+      margin-bottom: 0;
+    }
+
+    .project-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #003f54;
+      margin-bottom: 0.8rem;
+    }
+
+    .project-desc {
+      color: #174151;
+      margin-bottom: 1.2rem;
+      line-height: 1.6;
+      border-left: 4px solid #377a96;
+      padding-left: 1rem;
+    }
+
+    .tech-badge {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1.2rem 0 0.8rem;
+    }
+
+    .tech-badge span {
+      background: #deecf5;
+      border-radius: 30px;
+      padding: 0.2rem 1rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #0f4a60;
+    }
+
+    .edu-line {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 1px solid #dae2ec;
+      padding: 0.8rem 0;
+    }
+
+    .edu-line .degree {
+      font-weight: 700;
+      color: #002b39;
+    }
+
+    .edu-line .cgpa {
+      background: #d4e3f0;
+      padding: 0.2rem 1rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+    }
+
+    .course-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1rem;
+      margin: 1rem 0 0.5rem;
+    }
+
+    .course-list span {
+      background: #ecf3f9;
+      padding: 0.2rem 1rem;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      border: 1px solid #bdd0e2;
+    }
+
+    .certs {
+      margin-top: 1rem;
+      background: #e3eff9;
+      border-radius: 1.8rem;
+      padding: 1.2rem 1.5rem;
+    }
+
+    .certs p {
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      color: #003d51;
+    }
+
+    .certs ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem 1.5rem;
+    }
+
+    .certs li {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .certs i {
+      color: #00749c;
+    }
+
+    /* download button section */
+    .download-area {
+      margin-top: 2.2rem;
+      display: flex;
+      justify-content: flex-end;
+      border-top: 2px solid #d3e5f2;
+      padding-top: 2rem;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .btn-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      background: #0b384b;
+      color: white;
+      border: none;
+      padding: 1rem 2.8rem;
+      border-radius: 60px;
+      font-size: 1.3rem;
+      font-weight: 600;
+      box-shadow: 0 8px 18px -8px #104257;
+      transition: 0.15s;
+      text-decoration: none;
+      border: 1px solid #1e5b74;
+      cursor: pointer;
+    }
+
+    .btn-download i {
+      font-size: 1.6rem;
+      color: #b3ddf5;
+    }
+
+    .btn-download:hover {
+      background: #0a2f3f;
+      box-shadow: 0 12px 22px -10px #0d4055;
+      transform: scale(1.02);
+    }
+
+    .btn-download:active {
+      transform: scale(0.98);
+    }
+
+    .file-note {
+      color: #2b5d75;
+      font-size: 1rem;
+    }
+
+    /* responsive */
+    @media (max-width: 900px) {
+      .grid-details { grid-template-columns: 1fr; }
+      .name-title { flex-direction: column; align-items: start; gap: 1rem; }
+      .contact-links { padding: 0.8rem 1.5rem; }
+    }
+
+    @media (max-width: 550px) {
+      body { padding: 1rem; }
+      .portfolio { padding: 1.8rem; }
+      .btn-download { width: 100%; justify-content: center; }
+    }
+
+    .hidden-download { display: none; }
+  </style>
+</head>
+<body>
+  <main class="portfolio">
+
+    <!-- header with name + contact (exactly as resume) -->
+    <div class="name-title">
+      <h1> Aayush Thapa</h1>
+      <div class="contact-links">
+        <span><i class="fas fa-map-pin"></i> Bhubaneswar, India</span>
+        <span><i class="fas fa-phone-alt"></i> +91-7205584734</span>
+        <a href="mailto:thapaayahush087@gmail.com"><i class="fas fa-envelope"></i> thapaayahush087@gmail.com</a>
+        <a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      </div>
+    </div>
+
+    <!-- professional summary (updated tone) -->
+    <div class="summary-block">
+      <i class="fas fa-shield-halved" style="margin-right: 10px; color: #1a5d7a; font-size: 1.8rem; vertical-align: middle;"></i>
+      <strong>Professional summary:</strong> Final-year Computer Science student specializing in networking and cybersecurity fundamentals. Hands-on experience configuring secure network infrastructures using Cisco Packet Tracer, implementing ACLs, VLAN security, static routing, and attack simulations. Seeking an entry-level Cybersecurity Analyst / SOC Analyst role to contribute to security operations and threat monitoring.
+    </div>
+
+    <!-- main two‑column content with all new skills integrated -->
+    <div class="grid-details">
+      <!-- left column: detailed technical skills (AUTH, CRYPTO, FIREWALL, WIRELESS, TOOLS) -->
+      <section class="skills-panel">
+        <h2><i class="fas fa-code-branch"></i> Technical skills</h2>
+
+        <!-- Cybersecurity & access control -->
+        <div class="skill-category">
+          <h3><i class="fas fa-user-lock"></i> Authentication & access control</h3>
+          <div class="skill-tags">
+            <span>Authentication protocols</span><span>Access controls (RBAC)</span><span>MFA concepts</span><span>AAA framework</span>
+          </div>
+        </div>
+
+        <!-- Cryptography (new) -->
+        <div class="skill-category">
+          <h3><i class="fas fa-key"></i> Cryptography</h3>
+          <div class="skill-tags">
+            <span>Symmetric: DES, AES</span><span>Asymmetric: RSA, DH</span><span>Public key infrastructure</span><span>Jcrypt tool</span>
+          </div>
+        </div>
+
+        <!-- Firewall technologies + zone-based (new) -->
+        <div class="skill-category">
+          <h3><i class="fas fa-firewall"></i> Firewall & wireless security</h3>
+          <div class="skill-tags">
+            <span>Zone‑based policy firewall</span><span>Firewall technologies</span><span>Wireless security (WPA2/3)</span><span>802.1X</span>
+          </div>
+        </div>
+
+        <!-- existing cybersecurity skills (expanded) -->
+        <div class="skill-category">
+          <h3><i class="fas fa-shield"></i> Cybersecurity core</h3>
+          <div class="skill-tags">
+            <span>ACLs (Std/Ext)</span><span>VLAN & Port Security</span><span>STP Security (BPDU Guard)</span>
+            <span>ARP Spoofing</span><span>SSH</span><span>Incident Response</span>
+          </div>
+        </div>
+
+        <!-- Networking -->
+        <div class="skill-category">
+          <h3><i class="fas fa-network-wired"></i> Networking</h3>
+          <div class="skill-tags">
+            <span>TCP/IP</span><span>Subnetting</span><span>Static Routing</span><span>DHCP</span><span>DNS</span>
+            <span>Routing Table</span><span>Packet Flow</span>
+          </div>
+        </div>
+
+        <!-- Tools & platforms (added John, Jcrypt, SSH) -->
+        <div class="skill-category">
+          <h3><i class="fas fa-tools"></i> Tools & platforms</h3>
+          <ul class="tools-list">
+            <li><i class="fas fa-check-circle"></i> Cisco Packet Tracer</li>
+            <li><i class="fas fa-check-circle"></i> Wireshark</li>
+            <li><i class="fas fa-check-circle"></i> Linux (Bash)</li>
+            <li><i class="fas fa-check-circle"></i> John the Ripper</li>
+            <li><i class="fas fa-check-circle"></i> Jcrypt / SSH tools</li>
+			<li><i class="fas fa-check-circle"></i> Kali Linux</li>
+          </ul>
+        </div>
+
+        <!-- Programming -->
+        <div class="skill-category">
+          <h3><i class="fas fa-laptop-code"></i> Programming</h3>
+          <div class="skill-tags">
+            <span>C/C++</span><span>Python (Basic)</span><span>Bash/PowerShell</span><span>SQL</span><span>Javascript (Basic)</span><span>Assembly (Basic)</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- right column: project + education + certs -->
+      <div>
+        <!-- project card (updated to reflect new skills) -->
+        <article class="project-panel">
+          <h2><i class="fas fa-diagram-project"></i> Project</h2>
+          <div class="project-title">Secure Network Design & Implementation - Cisco Packet Tracer</div>
+          <div class="project-desc">
+            Designed multi-router topology with VLAN segmentation, static routing, and DHCP. Implemented Standard/Extended ACLs, port security, BPDU Guard, and simulated ARP spoofing. Integrated zone‑based firewall policies and tested wireless security (WPA2) concepts. Used SSH for secure device access and explored cryptographic protections (AES/RSA) in simulated environment.
+          </div>
+          <div class="tech-badge">
+            <span>ACLs</span><span>VLAN</span><span>STP</span><span>ZBF</span><span>WPA2</span><span>AES</span><span>SSH</span>
+          </div>
+        </article>
+
+        <!-- education card -->
+        <article class="edu-panel">
+          <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+          <div class="edu-line">
+            <span class="degree">B.Tech in Computer Science Engineering</span>
+            <span class="cgpa">CGPA: 8.33</span>
+          </div>
+          <div style="color:#1d4d63; margin-top: 0.2rem;">Expected Graduation: May 2026</div>
+
+          <div style="margin-top: 1.5rem;">
+            <h3 style="font-size: 1.2rem; color: #144b60; margin-bottom: 0.8rem;"><i class="fas fa-book-open"></i> Relevant coursework</h3>
+            <div class="course-list">
+              <span>Computer Networks</span><span>Operating Systems</span><span>Database Management System</span>
+              <span>Machine Learning</span><span>Artificial Intelligence</span><span>Object Orient Programming</span>
+              <span>Computer Architecture</span><span>Cryptography</span><span>Network & Cybersecurity</span><span>Data Structures & Algorithms </span>
+            </div>
+          </div>
+
+          <!-- certifications exactly as resume + hint of new tools -->
+          <div class="certs">
+            <p><i class="fas fa-certificate"></i> Certifications</p>
+            <ul>
+              <li><i class="fas fa-check-circle"></i> Cisco Cybersecurity Essentials</li>
+              <li><i class="fas fa-check-circle"></i> Cisco CyberThreat Intelligence</li>
+              <li><i class="fas fa-check-circle"></i> Google Cybersecurity Essentials</li>
+            </ul>
+            <!-- <p style="margin-top: 0.8rem; font-style: italic; color: #1c5e7a;"><i class="fas fa-cog"></i> Hands-on with John the Ripper, Jcrypt, SSH, zone‑based firewalls --></p>
+          </div>
+        </article>
+      </div>
+    </div> <!-- end grid-details -->
+
+    <!-- download cv area + recruiter note -->
+    <div class="download-area">
+      <span class="file-note"><i class="fas fa-file-pdf"></i> Aayush_Thapa_Resume.pdf</span>
+      <a href="#" id="downloadCvBtn" class="btn-download">
+        <i class="fas fa-download"></i> Download CV / Resume
+      </a>
+    </div>
+
+    <!-- hidden download link (used by JS) -->
+    <a class="hidden-download" id="hiddenDownloadLink" download="Aayush_Thapa_Resume"></a>
+
+    <!-- micro footnote -->
+    <div style="margin-top: 2rem; font-size: 0.9rem; color: #3b6d84; text-align: right; border-top: 1px dashed #c2d7e8; padding-top: 1.2rem;">
+      <i class="fas fa-shield"></i><!--  Cybersecurity Analyst (entry-level) · cryptography · firewall · wireless security -->
+    </div>
+  </main>
+
+  <script>
+    (function() {
+      const downloadBtn = document.getElementById('downloadCvBtn');
+      const hiddenLink = document.getElementById('hiddenDownloadLink');
+
+      function downloadResume() {
+        // Generate an updated resume text that includes all new skills.
+        const resumeText = `AAYUSH THAPA
+Bhubaneswar, India | +91-7205584734 | thapaayahush087@gmail.com
+LinkedIn: linkedin.com/in/aayush-thapa-b715171a6
+
+PROFESSIONAL SUMMARY
+Final-year Computer Science student with deep-dive expertise in networking, cybersecurity, and cryptography (symmetric/asymmetric). Hands-on experience configuring secure infrastructures, authentication mechanisms, firewalls (zone‑based policy), and wireless security. Proficient with tools like John the Ripper, Jcrypt, SSH. Seeking entry-level Cybersecurity Analyst / SOC Analyst role.
+
+TECHNICAL SKILLS
+• Authentication & access control: Authentication protocols, RBAC, MFA, AAA
+• Cryptography: Symmetric (DES, AES), Asymmetric (RSA, DH), Jcrypt tool
+• Firewall & wireless: Zone‑based policy firewall, firewall technologies, wireless security (WPA2/3), 802.1X
+• Cybersecurity core: ACLs (Std/Ext), VLAN & Port Security, STP Security (BPDU Guard), ARP spoofing, SSH, Incident Response
+• Networking: TCP/IP, Subnetting, Static Routing, DHCP, DNS, Routing Table & Packet Flow Analysis
+• Tools & platforms: Cisco Packet Tracer, Wireshark, Linux, John the Ripper, Jcrypt, SSH
+• Programming: C/C++, Python (Basic), Bash, SQL
+
+PROJECT
+Secure Network Design & Implementation - Cisco Packet Tracer
+Designed multi-router topology with VLAN segmentation, static routing, and DHCP. Implemented Standard/Extended ACLs, port security, BPDU Guard, and simulated ARP spoofing. Integrated zone‑based firewall policies and tested wireless security (WPA2) concepts. Used SSH for secure device access and explored cryptographic protections (AES/RSA) in simulated environment.
+
+EDUCATION
+B.Tech in Computer Science Engineering | Expected Graduation: May 2026 | CGPA: 8.33
+
+RELEVANT COURSEWORK
+Computer Networks | Operating Systems | DBMS | Machine Learning | Artificial Intelligence | OOP | Computer Architecture | Cryptography | Wireless Security
+
+CERTIFICATIONS
+Cisco Cybersecurity Essentials
+Cisco CyberThreat Intelligence
+Google Cybersecurity Essentials
+
+-- portfolio includes authentication, cryptography (DES,AES,RSA,DH), zone‑based firewall, wireless, John the Ripper, Jcrypt, SSH --`;
+
+        const blob = new Blob([resumeText], { type: 'application/octet-stream' });
+        const url = window.URL.createObjectURL(blob);
+        hiddenLink.href = url;
+        hiddenLink.download = 'Aayush_Thapa_Resume.pdf';  // filename
+        hiddenLink.click();
+        window.URL.revokeObjectURL(url);
+      }
+
+      downloadBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        downloadResume();
+      });
+    })();
+  </script>
+</body>
+</html>
